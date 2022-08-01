@@ -13,3 +13,9 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+.DS_STORE
+.vscode/
+
+# generated binary by go build -o bin/
+bin/

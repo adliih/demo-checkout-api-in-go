@@ -1,0 +1,45 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type Product {
+  sku: ID!
+  name: String!
+  price: Float!
+  qty: Int!
+}
+
+type Transaction {
+  id: ID!
+  subTotal: Float!
+  total: Float!
+  discount: Float!
+  details: [TransactionDetail!]!
+}
+
+type TransactionDetail {
+  product: Product!
+  qty: Int!
+  price: Float!
+}
+
+input CheckoutProductInput {
+  sku: ID!
+  qty: Int!
+}
+
+input CheckoutInput {
+  products: [CheckoutProductInput!]!
+}
+
+input ProductInput {
+  sku: ID!
+  name: String!
+  price: Float!
+  qty: Int!
+}
+
+type Mutation {
+  checkout(input: CheckoutInput!): Transaction!
+  createProduct(input: [ProductInput]!): [Product]!
+}
